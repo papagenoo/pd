@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="Chrome_3601985125_Mac_OS.GreeterTest" errors="0" failures="0" tests="1" time="0.002">
+<testcase classname="Chrome_3601985125_Mac_OS.GreeterTest" name="testGreet" time="0.002"/>
+</testsuite>
