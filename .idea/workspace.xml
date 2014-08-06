@@ -61,6 +61,9 @@
   <component name="FavoritesManager">
     <favorites_list name="pd" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="47" />
@@ -233,12 +236,12 @@
       <changelist id="bfe971cc-708b-47a7-8e8d-62a2b9ba47c1" name="Default" comment="" />
       <created>1407333080259</created>
       <updated>1407333080259</updated>
-      <workItem from="1407333088222" duration="8000" />
+      <workItem from="1407333088222" duration="122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8000" />
+    <option name="totallyTimeSpent" value="122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="6" />
