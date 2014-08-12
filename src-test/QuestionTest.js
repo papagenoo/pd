@@ -24,7 +24,7 @@ TestCase("QuestionTest", {
         assertEquals(false, question.verifyAnswer('qwerty'));
     },
 
-    "test ": function () {
+    "test b": function () {
         var question = this.question;
         var textWord = this.textWord;
         assertEquals(true, question.verifyAnswerInverse(textWord));
