@@ -18,7 +18,7 @@ TestCase("WordTest", {
             { timestamp: new Date('2014.08.10 12:30:00').getTime(), right: true },
         ];
         var testResults = new TestResultsForWord(answers);
-        //assertNull(word.estimateCorrectAnswerProbability(answers, now, testResults));
+        assertEquals(0, word.estimateCorrectAnswerProbability(testResults, now, null));
     }//,
 
 //

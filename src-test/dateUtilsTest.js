@@ -9,10 +9,5 @@ TestCase("dateUtilsTest", {
 
     "test get hours from timestamp": function () {
         assertEquals(391022, dateUtils.hoursFromTimestamp(this.timestamp));
-    }//,
-
-//    "test SortedList": function () {
-//        var sortedList = new SortedList();
-//        sortedList.insertOne(val)
-//    }
+    }
 });
