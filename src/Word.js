@@ -19,22 +19,20 @@ Word.prototype = {
 
     /**
      *
-     * @param answers массив ответов [ { timestamp: timestamp, right: true } ]
+     * @param wordTestResults массив ответов [[ timestamp, isRight ]]
      * @param now
      * @returns {number}
      */
-    estimateCorrectAnswerProbability: function (answers, now) {
-        var count = answers.length;
-        var lastAnswerTimestamp = (count === 0
-                                    ? 0
-                                    : answers[count - 1].timestamp);
+    estimateCorrectAnswerProbability: function (wordTestResults, now, worstWordProb) {
+        var count = wordTestResults.length;
+        var lastAnswerTimestamp = wordTestResults ? wordTestResults.last()[0] : 0;
         // Если вопрос был задан менее 30 секунд назад, то этот вопрос мы больше не хотим
         if (dateUtils.secondsFromTimestamp(now - lastAnswerTimestamp) < 30)
             return null;
 
         var totalWeight = 0;
         var weightedSum = 0;
-        for (var a in answers) {
+        for (var a in wordTestResults) {
             var hours = dateUtils.hoursFromTimestamp(a.timestamp - now);
             var weight = statisticUtils.gaussianDistribution(hours, statisticUtils.gauss_expecation, statisticUtils.gauss_sigma);
             totalWeight += weight;
