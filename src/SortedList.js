@@ -1,67 +1,83 @@
-function SortedList(compareCallback, initial) {
-    this._compareCallback = compareCallback;
-    this._arr = [];
-    this.insertFew(initial);
-}
+(function () {
 
-//SortedList.prototype = new Array();
-//SortedList.prototype.constructor = Array.prototype.constructor;
-
-SortedList.prototype.insert = function (val) {
-    this._arr.push(val);
-    this._setDirty();
-};
-
-SortedList.prototype.insertFew = function (vals) {
-    var self = this;
-    (vals || []).forEach(function (val) {
-        self.insert(val);
-    });
-    var self = null;
-};
-
-/**
- * Преобразовать в обычный массив
- * @returns {Array}
- */
-SortedList.prototype.toArray = function () {
-    this._ensureSort();
-    return this._arr.slice();
-};
-
-SortedList.prototype.first = function () {
-    this._ensureSort();
-    return this._arr.length
-        ? this._arr[0]
-        : null;
-};
-
-SortedList.prototype.last = function () {
-    this._ensureSort();
-    return this._arr.length
-        ? this._arr[this._arr.length - 1]
-        : null;
-};
-
-SortedList.prototype._ensureSort = function () {
-    if (this._dirty) {
-        this._dirty = false;
-        this._sort();
-    }
-};
-
-SortedList.prototype._sort = function (isLog) {
-    if (isLog) {
-        jstestdriver.console.log('_sort', this._compareCallback, this._arr);
+    function _arr(sortedList) {
+        if (!sortedList._arr)
+            sortedList._arr = [];
+        return sortedList._arr;
     }
 
-    this._arr = this._arr.sort(this._compareCallback);
-};
+    /**
+     * Для сортировки - если что-то добавилось, нужно пересортировать
+     * @private
+     */
+    function _setDirty(sortedList) {
+        sortedList._dirty = true;
+    }
 
-/**
- * Для сортировки - если что-то добавилось, нужно пересортировать
- * @private
- */
-SortedList.prototype._setDirty = function () {
-    this._dirty = true;
-};
+    function insert(val) {
+        var arr = _arr(this);
+        arr.push(val);
+        _setDirty(this);
+    }
+
+    function insertFew(vals) {
+        for (var i = 0, l = (vals || []).length; i < l; i++)
+            this.insert(vals[i]);
+    }
+
+    function first() {
+        _ensureSort(this);
+        var arr = _arr(this);
+        return arr.length ? arr[0] : null;
+    }
+
+    function last() {
+        _ensureSort(this);
+        var arr = _arr(this);
+        return arr.length ? arr[arr.length - 1] : null;
+    }
+
+    /**
+     * Преобразовать в обычный массив
+     * @returns {Array}
+     */
+    function toArray() {
+        _ensureSort(this);
+        return _arr(this).slice();
+    }
+
+    function _ensureSort(sortedList) {
+        if (sortedList._dirty) {
+            sortedList._dirty = false;
+            _sort(sortedList);
+        }
+    }
+
+    function _sort(sortedList) {
+        var arr = _arr(sortedList);
+        arr.sort(sortedList._compare);
+    }
+
+    function defaultCompare(a, b) {
+        return (a === b ? 0 : (a < b ? -1 : 1));
+    }
+
+    var sortedList = {
+        insert: insert,
+        insertFew: insertFew,
+        first: first,
+        last: last,
+        toArray: toArray,
+        _compare: defaultCompare
+    };
+
+    pd.namespace('util').sortedList = function (initial, compare) {
+        var sl = Object.create(sortedList);
+        if (Array.isArray(initial))
+            sl.insertFew(initial);
+        if (typeof compare === 'function')
+            sl._compare = compare;
+        return sl;
+    };
+
+}());

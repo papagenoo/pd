@@ -1,4 +1,6 @@
 (function () {
+    pd.namespace("words").TestResultsForWord = TestResultsForWord;
+
     /**
      * Результат тестирования для слова
      * @constructor
@@ -26,6 +28,4 @@
             : (ts1 < ts2 ? -1 : 1));
     };
 
-    pd.namespace("test").TestResultsForWord = TestResultsForWord;
 }());
-
