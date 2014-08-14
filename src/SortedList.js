@@ -50,7 +50,11 @@ SortedList.prototype._ensureSort = function () {
     }
 };
 
-SortedList.prototype._sort = function () {
+SortedList.prototype._sort = function (isLog) {
+    if (isLog) {
+        jstestdriver.console.log('_sort', this._compareCallback, this._arr);
+    }
+
     this._arr = this._arr.sort(this._compareCallback);
 };
 
