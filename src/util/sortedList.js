@@ -63,7 +63,7 @@
     }
 
     function length() {
-        return _arr(sortedList).length;
+        return _arr(this).length;
     }
 
     var sortedList = {

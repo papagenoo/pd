@@ -50,8 +50,6 @@
     function lastResultTimestamp(word) {
         var results = _resultsForWord(this, word);
         var last = results.length ? results.last() : null;
-        jstestdriver.console.log(JSON.stringify(results));
-
         return last ? last[0] : null;
     }
 
@@ -62,8 +60,12 @@
     };
 
     pd.namespace('words').testResults = {
-        create: function () {
-            return Object.create(testResults);
+        create: function (/*initial*/) {
+            var tr = Object.create(testResults);
+//            if (initial)
+//                for (var i = 0, l = initial.length; i < l; i++)
+//                    tr.addResultForWord();
+            return tr;
         }
     };
 

@@ -44,8 +44,6 @@
             assertEquals([], this.testResults.resultsForWordAsArray('NON_EXISTENT'));
             assertEquals(ts3, this.testResults.lastResultTimestamp('der Vater'));
             assertEquals(ts4, this.testResults.lastResultTimestamp('die Muter'));
-
-
         }
     });
 

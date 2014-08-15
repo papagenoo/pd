@@ -27,12 +27,12 @@
          * Создать результаты тестирования для слова
          * @constructor
          */
-       create: function (initial) {
-           var tr = sortedList.create(initial, _compareWordTestResults);
-           tr.addResult = addResult;
-           pd.extend(tr, mixin);
-           return tr;
-       }
+        create: function (initial) {
+            var tr = sortedList.create(initial, _compareWordTestResults);
+            tr.addResult = addResult;
+            pd.extend(tr, mixin);
+            return tr;
+        }
     };
 
 }());
