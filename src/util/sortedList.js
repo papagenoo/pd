@@ -62,22 +62,29 @@
         return (a === b ? 0 : (a < b ? -1 : 1));
     }
 
+    function length() {
+        return _arr(sortedList).length;
+    }
+
     var sortedList = {
         insert: insert,
         insertFew: insertFew,
         first: first,
         last: last,
         toArray: toArray,
+        length: length,
         _compare: defaultCompare
     };
 
-    pd.namespace('util').sortedList = function (initial, compare) {
-        var sl = Object.create(sortedList);
-        if (Array.isArray(initial))
-            sl.insertFew(initial);
-        if (typeof compare === 'function')
-            sl._compare = compare;
-        return sl;
+    pd.namespace('util').sortedList = {
+        create: function (initial, compare) {
+            var sl = Object.create(sortedList);
+            if (Array.isArray(initial))
+                sl.insertFew(initial);
+            if (typeof compare === 'function')
+                sl._compare = compare;
+            return sl;
+        }
     };
 
 }());
