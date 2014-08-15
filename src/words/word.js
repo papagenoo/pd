@@ -1,19 +1,22 @@
+(function () {
+
+
+
 function Word(word, translations, examples) {
     this._word = word;
     this._translations = translations;
     this._examples = examples;
 }
 
-Word.prototype = {
-    getWord: function () {
+    function getWord() {
         return this._word;
     },
 
-    getTranslations: function () {
+    function getTranslations() {
         return this._translations;
     },
 
-    getExamples: function () {
+    _getExamples:  () {
         return this._examples;
     },
 
@@ -103,4 +106,5 @@ Word.prototype = {
     return ret;
 }*/
 
-};
+
+}());

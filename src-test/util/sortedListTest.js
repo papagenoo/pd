@@ -3,7 +3,6 @@
     var sortedList = pd.util.sortedList;
 
     TestCase("sortedListTest", {
-
         setUp: function () {
             this.sortedList = sortedList.create();
             this.sortedList.insert(4);
@@ -64,7 +63,6 @@
         'test length': function () {
             assertEquals(4, this.sortedList.length());
         }
-
     });
 
 }());

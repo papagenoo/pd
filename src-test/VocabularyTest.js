@@ -1,3 +1,7 @@
+(function () {
+
+}());
+
 TestCase("VocabularyTest", {
     setUp: function () {
         this.emptyVocabulary = new Vocabulary();

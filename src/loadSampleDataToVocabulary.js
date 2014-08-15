@@ -1,3 +1,6 @@
+(function () {
+
+}());
 function loadSampleDataToVocabulary(vocabulary) {
     //    wordsDto.map(function (wordDto) {
 //        var translations = new Translation();

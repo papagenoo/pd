@@ -1,3 +1,6 @@
+(function () {
+
+}());
 function Vocabulary() {
     this._words = [];
     this._pos = 0;

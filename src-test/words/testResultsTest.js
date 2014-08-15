@@ -1,7 +1,7 @@
 (function () {
 
     var testResults = pd.words.testResults;
-    var dateUtils = pd.util.dateUtils;
+    var date = pd.util.date;
 
     TestCase("testResultsTest", {
         setUp: function () {
@@ -9,7 +9,7 @@
         },
 
         "test add new test result": function () {
-            var ts1 = dateUtils.timestampFromDateString('2014.08.10 12:00:00');
+            var ts1 = date.timestampFromDateString('2014.08.10 12:00:00');
             var ts2 = new Date('2014.08.10 12:15:00').getTime();
             var ts3 = new Date('2014.08.10 12:30:00').getTime();
             var ts4 = new Date('2014.08.10 12:35:00').getTime();

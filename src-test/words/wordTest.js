@@ -1,16 +1,17 @@
 (function () {
 
-    var TestResultsForWord = pd.words.TestResultsForWord;
+    var translation = pd.words.translation;
+    var testResultsForWord = pd.words.testResultsForWord;
 
     TestCase("WordTest", {
         "test add new meaning and get synonyms": function () {
-            var translations = new Translation();
-            translations.addMeaning(['папа', 'отец']);
-            translations.addMeaning(['father']);
+            var t = translation.create();
+            t.addMeaning(['папа', 'отец']);
+            t.addMeaning(['father']);
             var examples = ['Ich liebe meinen Vater.', 'Er liebt den Vater.', 'Mein Vater hat ein teueres Auto.'];
-            var word = new Word('der Vater', translations, examples/*, serviceInfo, testStatistics*/);
+            var word = new Word('der Vater', t, examples/*, serviceInfo, testStatistics*/);
             assertEquals('der Vater', word.getWord());
-            assertEquals(translations, word.getTranslations());
+            assertEquals(t, word.getTranslations());
             assertEquals(examples, word.getExamples());
         },
 
@@ -18,10 +19,10 @@
             var word = new Word('der Vater');
             var now = new Date('2014.08.10 12:30:20').getTime();
             var answers = [
-                { timestamp: new Date('2014.08.10 12:00:00').getTime(), right: true },
-                { timestamp: new Date('2014.08.10 12:30:00').getTime(), right: true },
+                [ new Date('2014.08.10 12:00:00').getTime(), true ],
+                [ new Date('2014.08.10 12:30:00').getTime(), true ],
             ];
-            var testResults = new TestResultsForWord(answers);
+            var testResults = testResultsForWord.create(answers);
             //assertEquals(0, word.estimateCorrectAnswerProbability(testResults, now, null));
         }//,
 

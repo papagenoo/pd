@@ -1,3 +1,6 @@
+(function () {
+
+}());
 window.sampleVocabularyData = [
     {
         "id": 1,

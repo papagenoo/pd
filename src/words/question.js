@@ -1,3 +1,7 @@
+(function () {
+
+}());
+
 function Question(word, compareWordsCallback) {
     this._word = word;
     this._compareWordsCallback = compareWordsCallback;

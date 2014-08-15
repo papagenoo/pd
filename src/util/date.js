@@ -12,7 +12,7 @@
         return (new Date(dateString)).getTime();
     }
 
-    pd.namespace('util').dateUtils = {
+    pd.namespace('util').date = {
         secondsFromTimestamp: secondsFromTimestamp,
         hoursFromTimestamp: hoursFromTimestamp,
         timestampFromDateString: timestampFromDateString
