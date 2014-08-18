@@ -9,7 +9,7 @@
             translations.addMeaning(['father']);
             var examples = ['Ich liebe meinen Vater.', 'Er liebt den Vater.', 'Mein Vater hat ein teueres Auto.'];
             this.textWord = 'der Vater';
-            this.word = new Word(this.textWord, translations, examples/*, serviceInfo, testStatistics*/);
+            this.word = word.create(this.textWord, translations, examples/*, serviceInfo, testStatistics*/);
 
             var compareWordsCallback = function (w1, w2) {
                 return w1 === w2;

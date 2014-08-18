@@ -1,40 +1,47 @@
 (function () {
 
-    var translation = pd.words.translation;
-    var testResultsForWord = pd.words.testResultsForWord;
+    var word = pd.words.word;
 
     TestCase("WordTest", {
-        "test add new meaning and get synonyms": function () {
-            var t = translation.create();
-            t.addMeaning(['папа', 'отец']);
-            t.addMeaning(['father']);
-            var examples = ['Ich liebe meinen Vater.', 'Er liebt den Vater.', 'Mein Vater hat ein teueres Auto.'];
-            var word = new Word('der Vater', t, examples/*, serviceInfo, testStatistics*/);
-            assertEquals('der Vater', word.getWord());
-            assertEquals(t, word.getTranslations());
-            assertEquals(examples, word.getExamples());
+        setUp: function () {
+            this.translations = {};
+            this.examples = [];
+            this.wordName = 'der Vater';
+            this.word = word.create(this.wordName, this.translations, this.examples/*, serviceInfo, testStatistics*/);
         },
 
-        "test estimate correct answer probability must be null if < 30 sec after last answer": function () {
-            var word = new Word('der Vater');
-            var now = new Date('2014.08.10 12:30:20').getTime();
-            var answers = [
-                [ new Date('2014.08.10 12:00:00').getTime(), true ],
-                [ new Date('2014.08.10 12:30:00').getTime(), true ],
-            ];
-            var testResults = testResultsForWord.create(answers);
-            //assertEquals(0, word.estimateCorrectAnswerProbability(testResults, now, null));
-        }//,
+        "test get word name": function () {
+            assertEquals(this.wordName, this.word.getWord());
+        },
 
-    //
-    //    "estimate correct answer probability": function () {
-    //        var word = new Word('der Vater');
-    //        var answers = [
-    //            { timestamp: new Date('2014.08.10 12:24:56'), right: true },
-    //            { timestamp: new Date('2014.08.10 12:34:56'), right: true },
-    //        ];
-    //        assertEquals(1, word.estimateCorrectAnswerProbability());
-    //    }
+        "test get translations": function () {
+            assertEquals(this.translations, this.word.getTranslations());
+        },
+
+        "test get examples": function () {
+            assertEquals(this.examples, this.word.getExamples());
+        },
+
+//        "test estimate correct answer probability must be null if < 30 sec after last answer": function () {
+//            var w = word.create('der Vater', {}, []);
+//            var now = new Date('2014.08.10 12:30:20').getTime();
+//            var answers = [
+//                [ new Date('2014.08.10 12:00:00').getTime(), true ],
+//                [ new Date('2014.08.10 12:30:00').getTime(), true ],
+//            ];
+//            var testResults = testResultsForWord.create(answers);
+//            //assertEquals(0, word.estimateCorrectAnswerProbability(testResults, now, null));
+//        }//,
+
+        //
+        //    "estimate correct answer probability": function () {
+        //        var word = new Word('der Vater');
+        //        var answers = [
+        //            { timestamp: new Date('2014.08.10 12:24:56'), right: true },
+        //            { timestamp: new Date('2014.08.10 12:34:56'), right: true },
+        //        ];
+        //        assertEquals(1, word.estimateCorrectAnswerProbability());
+        //    }
 
     });
 

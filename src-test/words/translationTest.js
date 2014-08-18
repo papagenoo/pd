@@ -2,12 +2,6 @@
     var translation = pd.words.translation;
 
     TestCase("translationTest", {
-//    setUp: function () {
-//    },
-//
-//    tearDown: function () {
-//    },
-//
         "test add new meaning and get synonyms": function () {
             var t = translation.create();
             t.addMeaning(['папа', 'отец']);
